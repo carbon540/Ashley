@@ -15,4 +15,6 @@ Information on using the transceiver: https://www.hoperf.com/data/upload/portal/
 
 ## main.py
 
-## rfm95c.py
+## send.py
+
+## receive.py

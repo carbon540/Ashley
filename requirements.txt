@@ -1,0 +1,7 @@
+Adafruit-Blinka
+adafruit-circuitpython-busdevice
+#The following modules may be included in Adafruit-Blinka:
+board
+busio
+digitalio
+adafruit_rfm9x

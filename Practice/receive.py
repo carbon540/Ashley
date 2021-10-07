@@ -4,7 +4,7 @@ import board
 import busio
 import digitalio
 import adafruit_rfm9x
-from datetime.datetime import now
+from datetime import datetime
 
 # Set radio frequency, in MHz
 # 915.0 for US, 868.0 for UK/Europe
@@ -58,7 +58,7 @@ def wrt(message):
 while True:
     packet = rfm9x.receive(timeout=1.0)
     # If no packet was received during the timeout then None is returned.
-    tm = str(now())
+    tm = str(datetime.now())
     if packet is None:
         # Packet has not been received
         message = "{0}, Null, 0, 0, 0, 0". format(tm)

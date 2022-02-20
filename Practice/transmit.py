@@ -2,7 +2,8 @@ import board
 import busio
 import digitalio
 import adafruit_rfm9x
-from datetime.datetime import now
+from datetime import datetime as dt
+import time
 
 # Set radio frequency, in MHz
 # 915.0 for US, 868.0 for UK/Europe
@@ -39,14 +40,14 @@ rfm9x.coding_rate = 8
 # Enable CRC (cyclic redundency checker)
 # Valid settings are (True, False)
 # Increases redundency
-# rfm9x.enable_crc = True
+rfm9x.enable_crc = True
 
 def wrt(message) -> None:
     """
     Opens a CSV file, writes a message, closes
     Prints to terminal
     """
-    with open("sendlog.csv") as log:
+    with open("/home/pi/Ashley/Practice/sendlog.csv",'w') as log:
         log.write(message)
         print(message)
         
@@ -54,7 +55,7 @@ try:
     while True:
         packet_text = "Hello world!\r\n"
         packet = bytes(packet_text, "utf-8")
-        tm = str(datetime.now())
+        tm = str(dt.now())
         rfm9x.send(packet)
         time.sleep(1)  
         

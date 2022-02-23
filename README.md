@@ -18,3 +18,12 @@ Information on using the transceiver: https://www.hoperf.com/data/upload/portal/
 ## send.py
 
 ## receive.py
+
+# To-do
+* Setup radio settings in main.py
+* Main loop for receiving, or moving to send mode
+* radio object - may not be needed - can repurpose other code
+* listen function
+* send function
+* button read
+* message writing

@@ -61,13 +61,14 @@ while True:
     tm = str(datetime.now())
     if packet is None:
         # Packet has not been received
-        message = "{0}, Null, 0, 0, 0, 0". format(tm)
+        message = "{0}, Null, 0, 0, 0, 0 \n". format(tm)
+        print(message)
     else:
         # Packet received
         # Print out the raw bytes of the packet, the decoded ASCII and the signal strength
         # Make sure it is being sent in ASCII!
-        packet_text = str(packet, "ascii")
+        packet_text = str(packet, encoding='utf-8')
         rssi = rfm9x.last_rssi
         lsnr  = rfm9x.last_snr
         message = "{0}, Received, {1}, {2}, {3}, {4}".format(tm, packet, packet_text, rssi, lsnr)
-    wrt(message)
+        wrt(message)

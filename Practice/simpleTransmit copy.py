@@ -9,7 +9,7 @@ import digitalio
 
 import adafruit_rfm9x
 
-from numpy import random
+#from numpy import random
 import time
 
 # Define radio parameters.
@@ -39,14 +39,15 @@ rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, RADIO_FREQ_MHZ)
 
 # You can however adjust the transmit power (in dB).  The default is 13 dB but
 # high power radios like the RFM95 can go up to 23 dB:
-rfm9x.tx_power = 13
+rfm9x.tx_power = 23
 
 for x in range(1000):
+    y = x + 0.5
     # Send a packet.  Note you can only send a packet up to 252 bytes in length.
     # This is a limitation of the radio packet size, so if you need to send larger
     # amounts of data you will need to break it into smaller send calls.  Each send
     # call will wait for the previous one to finish before continuing.
-    rfm9x.send(bytes(str(x), "utf-8"))
-    print("Sent", x)
+    rfm9x.send(bytes(str(y), "utf-8"))
+    print("Sent", y)
     
     time.sleep(1)

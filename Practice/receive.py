@@ -23,7 +23,7 @@ rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, RADIO_FREQ_MHZ)
 # SETTINGS of transceiver. These can be altered to improve range or bitrate
 
 # Power of transceiver. Max value is 23dB.
-rfm9x.tx_power = 23
+rfm9x.tx_power = 18
 
 # Spreading factor. 
 # Valid settings are (6, 7, 8, 9, 10, 11, 12)
@@ -43,7 +43,7 @@ rfm9x.coding_rate = 8
 # Enable CRC (cyclic redundency checker)
 # Valid settings are (True, False)
 # Increases redundency
-# rfm9x.enable_crc = True
+rfm9x.enable_crc = True
 
 def wrt(message):
     """

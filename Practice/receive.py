@@ -5,6 +5,7 @@ import busio
 import digitalio
 import adafruit_rfm9x
 from datetime import datetime
+import time
 
 # Set radio frequency, in MHz
 # 915.0 for US, 868.0 for UK/Europe
@@ -28,7 +29,7 @@ rfm9x.tx_power = 23
 # Spreading factor. 
 # Valid settings are (6, 7, 8, 9, 10, 11, 12)
 # Higher settings improve range and decrease rate
-# rfm9x.spreading_factor = 12
+# rfm9x.spreading_factor = 6
 
 # Signal bandwidth
 # Valid settings are (7800, 10400, 15600, 20800, 31250, 41700, 62500, 125000, 250000)
@@ -50,11 +51,12 @@ def wrt(message):
     Opens a CSV file, writes a message, closes
     Prints to terminal
     """
-    with open(f'receivelog_{str(datetime.now())}.csv', 'a') as log:
+    with open('receivelog.csv', 'a') as log:
         log.write(message)
         print(message)
 
 while True:
+    time.sleep(1)
     packet = rfm9x.receive()
     # If no packet was received during the timeout then None is returned.
     tm = str(datetime.now())

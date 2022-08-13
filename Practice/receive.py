@@ -50,13 +50,12 @@ def wrt(message):
     Opens a CSV file, writes a message, closes
     Prints to terminal
     """
-    log = open('receivelog.csv', 'a') 
-    log.write(message)
-    log.close()
-    print(message)
+    with open(f'receivelog_{str(datetime.now())}.csv', 'a') as log:
+        log.write(message)
+        print(message)
 
 while True:
-    packet = rfm9x.receive(timeout=1.0)
+    packet = rfm9x.receive()
     # If no packet was received during the timeout then None is returned.
     tm = str(datetime.now())
     if packet is None:
